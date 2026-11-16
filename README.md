@@ -1,10 +1,12 @@
 # Clipboard History
 
-A small macOS menu bar app that keeps your clipboard history (200 items by default, up to 1000).
+A small clipboard history app for macOS (menu bar) and Windows (system tray). It keeps your last 200 copies by default, up to 1000.
 
 ## Download
 
 [Download ClipboardHistory.dmg](https://github.com/tgopinath/ClipboardHistory/releases/latest/download/ClipboardHistory.dmg) (macOS 14+). Open it, drag the app onto Applications, then right-click the app and choose Open the first time (it isn't notarized).
+
+**Windows:** [Download ClipboardHistory-Setup.exe](https://github.com/tgopinath/ClipboardHistory/releases/latest/download/ClipboardHistory-Setup.exe) (Windows 10/11, 64-bit). Run it; no admin rights needed. The installer isn't code-signed, so Windows SmartScreen may show "Windows protected your PC". Click **More info → Run anyway**. Once installed, the app sits in the system tray (it may be under the **^** overflow arrow) and starts with Windows. Press **Ctrl+Alt+H** to open your history.
 
 ## Build and install
 
@@ -15,6 +17,12 @@ A small macOS menu bar app that keeps your clipboard history (200 items by defau
 This builds `Clipboard History.app`, copies it to `~/Applications` and launches it. It needs macOS 14 or later and the Xcode command line tools.
 
 To make a disk image instead, run `./build.sh --dmg`. It creates `build/ClipboardHistory.dmg`; open it and drag the app onto Applications. The app isn't notarized, so on another Mac the first launch needs right-click → Open.
+
+### Windows build
+
+The Windows version is in `windows/` (C# / WinForms, .NET 8). GitHub Actions builds it on every push to `windows/`; run the **Windows build** workflow manually with a release tag to attach `ClipboardHistory-Setup.exe` to that release.
+
+On Windows the shortcuts use Ctrl instead of ⌘: **Ctrl+Alt+H** opens it, **Ctrl+1–9**, **Ctrl+Shift+C** (Copy All), **Ctrl+P** (pin), **Ctrl+Delete**. Copy All on Windows includes all text plus the newest image, because the Windows clipboard holds one image at a time.
 
 ## Use
 
